@@ -4,6 +4,7 @@
     --matcha: #C7C7BB;
     --dustyrose: #D4C8BE;
     --linen: #E3E4E0;
+    --purewhite: #FFFFFF;
 }
 
 
@@ -11,7 +12,7 @@
 .btn-dark
 {
     background-color: var(--dustyrose);
-    color: var(--linen);
+    color: var(--purewhite);
     border-color: var(--dustyrose);
 }
  

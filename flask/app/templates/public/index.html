@@ -1,18 +1,107 @@
 <!-- Import Base Template -->
 {% extends "public/templates/base_template.html" %}
 
+<!-- Import Macros -->
+{% import "macros/card_macros.html" as card %}
 <!-- Page Title -->
 {% block title %}
     Home
 {% endblock %}
 
+
 <!-- Main Page Content -->
 {% block main %}
 <div class="container">
-    <div class="row">
+    
+    <!-- Jumbotron Code -->
+    <div class="jumbotron mb-4 mt-4">
+      <h1 class="display-4">Finance can be hard.</h1>
+      <h1 class="display-4">We're here to help.</h1>
+
+      <!-- Mission Statement -->
+      <p class="lead">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Suscipit tellus mauris a diam maecenas. 
+        Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat. Viverra mauris in aliquam sem fringilla. 
+        Ullamcorper eget nulla facilisi etiam dignissim diam.
+      </p>
+
+      <hr class="my-4">
+    
+      <div class="text-center">
+          <!-- Link to Getting Started -->
+          <p>Learn more about how you can get started managing your business' finances today.</p>
+          <p class="lead">
+            <a class="btn btn-dark text-white btn-lg" href="#" role="button">Get Started</a>
+          </p>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+
         <div class="col">
-            <h1>Home</h1>
+            {{ card.basic_info_button_card(
+                title      = "Vel turpis nunc eget lorem", 
+
+                text       = 
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Est placerat in egestas erat imperdiet sed euismod. Integer enim neque volutpat ac tincidunt vitae semper quis. 
+                Consectetur libero id faucibus nisl tincidunt. Maecenas pharetra convallis posuere morbi leo.",
+
+                buttonText = "Learn More",
+
+                dest       = "/"
+            )}}
         </div>
+
+        <div class="col">
+            {{ card.basic_info_button_card(
+                title      = "Ultrices mi tempus imperdiet nulla", 
+
+                text       = 
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Est placerat in egestas erat imperdiet sed euismod. Integer enim neque volutpat ac tincidunt vitae semper quis. 
+                Consectetur libero id faucibus nisl tincidunt. Maecenas pharetra convallis posuere morbi leo.",
+
+                buttonText = "Learn More",
+
+                dest       = "/"
+            )}}
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col">
+            {{ card.basic_info_button_card(
+                title      = "Parturient montes nascetur ridiculus mus", 
+
+                text       = 
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Est placerat in egestas erat imperdiet sed euismod. Integer enim neque volutpat ac tincidunt vitae semper quis. 
+                Consectetur libero id faucibus nisl tincidunt. Maecenas pharetra convallis posuere morbi leo.",
+
+                buttonText = "Learn More",
+
+                dest       = "/"
+            )}}
+        </div>
+
+        <div class="col">
+            {{ card.basic_info_button_card(
+                title      = "Suscipit tellus mauris a diam", 
+
+                text       = 
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Est placerat in egestas erat imperdiet sed euismod. Integer enim neque volutpat ac tincidunt vitae semper quis. 
+                Consectetur libero id faucibus nisl tincidunt. Maecenas pharetra convallis posuere morbi leo.",
+
+                buttonText = "Learn More",
+
+                dest       = "/"
+            )}}
+        </div>
+
     </div>
 </div>
 {% endblock %}

@@ -11,7 +11,15 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/button_overrides.css') }}">
-    {% block styling %} {% endblock %}
+
+    <style>
+        body {
+            background: #E3E4E0
+        }
+
+    </style>
+
+    {% block style %} {% endblock %}
 
     <!-- Location to Add Title to Browser Tab -->
     <title>{% block title %} {% endblock %}</title>
