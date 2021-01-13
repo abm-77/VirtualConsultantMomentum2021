@@ -1,0 +1,13 @@
+{% macro basic_info_button_card(title="", text="", buttonText="", dest="/") -%}
+<div class="card border-secondary">
+    <div class="card-body">
+
+        <h5 class="card-title">{{title}}</h5>
+
+        <p class="card-text">{{ text }}</p>
+
+        <a href="{{ dest }}" class="btn btn-outline-dark">{{ buttonText }}</a>
+
+    </div>
+</div>
+{%- endmacro %}
