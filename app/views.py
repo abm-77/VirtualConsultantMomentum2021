@@ -1,7 +1,8 @@
 from app import app
+from flask import render_template
 
 # Home Page
 @app.route("/")
 def index():
-    return "This is a test page!"
+    return render_template("public/index.html") 
 

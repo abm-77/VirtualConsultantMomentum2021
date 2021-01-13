@@ -1,0 +1,31 @@
+:root 
+{
+    --matcha: #C7C7BB;
+    --dustyrose: #D4C8BE;
+    --linen: #E3E4E0;
+}
+
+.btn-dark
+{
+    background-color: var(--dustyrose);
+    border-color: var(--dustyrose);
+}
+ 
+.btn-dark:hover, .btn-dark:focus, .btn-dark:active, .btn-dark.active, .open .dropdown-toggle.btn-dark 
+{
+    background-color: var(--linen);
+    border-color: var(--linen);
+}
+
+.btn-outline-dark
+{
+    background-color: var(--linen);
+    border-color: var(--dustyrose);
+}
+ 
+.btn-outline-dark:hover, .btn-outline-dark:focus, .btn-outline-dark:active, .btn-outline-dark.active, .open .dropdown-toggle.btn-outline-dark 
+{
+    background-color: var(--dustyrose);
+    border-color: var(--dustyrose);
+}
+
