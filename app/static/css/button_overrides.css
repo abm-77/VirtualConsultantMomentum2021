@@ -1,3 +1,4 @@
+/* Make Color Variables for Easy Reference */
 :root 
 {
     --matcha: #C7C7BB;
@@ -5,6 +6,8 @@
     --linen: #E3E4E0;
 }
 
+
+/* Override Bootstrap Base Button Colors */
 .btn-dark
 {
     background-color: var(--dustyrose);

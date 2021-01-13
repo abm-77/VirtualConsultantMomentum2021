@@ -15,15 +15,13 @@
 
     <!-- Location to Add Title to Browser Tab -->
     <title>{% block title %} {% endblock %}</title>
-
   </head>
   <body>
-   
     <!-- Navbar Code and Templating -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-    
-      <div class="container-fluid">
 
+      <div class="container-fluid">
+        <!-- Navbar Logo -->
         <a class="navbar-brand" href="/">
             <img src="{{ url_for('static', filename='img/Logo.svg') }}" alt="">
         </a>
@@ -37,7 +35,7 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
 
           <!-- Left Aligned Elements -->
-          <ul class="navbar-nav mr-auto fs-4 mt-3">
+          <ul class="navbar-nav mr-auto fs-4 mt-4">
             {{ nav.basic_navbar_item(text="Features", path="/features") }}
 
             {{ nav.basic_navbar_item(text="Marketplace", path="/store") }}
