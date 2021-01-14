@@ -29,32 +29,42 @@
                     <div class="card-body">
                     <h2 class="card-title text-center"> Create an Account</h1>
                     
-                    <form action="/signup" method="post">
-                    {{ input.field(
-                        label = "Name",
-                        type = "text",
-                        name = "name"
-                    )}}
+                    <form action="/signup" method="post" id="signupform">
+                        {{ input.field(
+                            label = "Name",
+                            type = "text",
+                            name = "name"
+                        )}}
 
-                    {{ input.field(
-                        label = "Email",
-                        type = "email",
-                        name = "email"
-                    )}}
+                        {{ input.field(
+                            label = "Email",
+                            type = "email",
+                            name = "email"
+                        )}}
 
-                    {{ input.field(
-                        label = "Password",
-                        type = "password",
-                        name = "password"
-                    )}}
+                        {{ input.field(
+                            label = "Password",
+                            type = "password",
+                            name = "password"
+                        )}}
 
-                    {{ input.field(
-                        label = "Confirm Password",
-                        type = "password",
-                        name = "confirm_password"
-                    )}}
+                        {{ input.field(
+                            label = "Confirm Password",
+                            type = "password",
+                            name = "confirm_password"
+                        )}}
+                    
 
-                    {{ input.submit(theme="btn-dark") }}
+                        <label for="role">Role</label>
+                        <select class="form-control" name="role" id="role" form="signupform">
+                          <option value="CONSUMER">Consumer</option>
+                          <option value="VENDOR">Vendor</option>
+                        </select>
+
+                        <div class="text-center mt-4">
+                            {{ input.submit(theme="btn-dark") }}
+                        </div>
+
                     </form>
                     </div>
                 </div>

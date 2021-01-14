@@ -12,13 +12,14 @@ class User:
         return jsonify(user), 200
     
     def SignUp (self, form):
-
+        # TODO: Add User Roles
         # Create the User Object
         user = {
-                "_id" : uuid.uuid4().hex,
-                "name" : form["name"],
-                "email" : form["email"],
-                "password" : form["password"],
+                "_id":      uuid.uuid4().hex,
+                "name":     form["name"],
+                "email":    form["email"],
+                "password": form["password"],
+                "role":     form["role"]
         }
 
         if user["password"] != form["confirm_password"]:
