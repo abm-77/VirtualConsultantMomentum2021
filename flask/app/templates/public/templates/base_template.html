@@ -45,10 +45,18 @@
           </ul>
 
           <!-- Right Aligned Elements -->
+
+          {% if session["logged_in"] %}
+          <ul class="navbar-nav mt-3">
+              <a class="btn btn-outline-dark me-2" href="/signout">Sign Out</a>
+              <a class="btn btn-dark me-2" href="/profile">Profile</a>
+          </ul>
+          {% else %}
           <ul class="navbar-nav mt-3">
               <a class="btn btn-outline-dark me-2" href="/login">Login</a>
-              <a class="btn btn-dark text-white me-2" href="/signup">Sign Up</a>
+              <a class="btn btn-dark me-2" href="/signup">Sign Up</a>
           </ul>
+          {% endif %}
           
         </div>
       </div>

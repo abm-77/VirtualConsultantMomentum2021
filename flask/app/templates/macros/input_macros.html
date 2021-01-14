@@ -1,7 +1,11 @@
-{% macro input(label="", type="text", name="", id="", placeholder="") -%}
-    <div class="form-group">
+{% macro field(label="", type="text", name="", id="", placeholder="") -%}
+    <div class="form-group mb-2">
         <label> {{ label }} </label>
-        <input class="form-control" type="{{ type  }}" name="{{ name }}" id="{{ id }}" placeholder="{{ placeholder }}">
+        <input class="form-control" type="{{ type  }}" name="{{ name }}" id="{{ id }}" placeholder="{{ placeholder }}" required>
     </div>
+{%- endmacro %}
+
+{% macro submit(text="Submit", theme="btn-primary") -%}
+    <button type="submit" class="btn {{ theme }}"> {{ text }}</button>
 {%- endmacro %}
 
