@@ -86,24 +86,6 @@ def Login ():
 def profile ():
     return render_template("public/consumer_profile.html") 
 
-@app.route("/profile/confirm/<token>")
-@login_required
-def ConfirmEmail(token):
-    try:
-        email = ConfirmToken(token)
-    except:
-        error = jsonify({"error": "The confirmation link is invalid or has expired."})
-
-    user = database.users.find_one({"email": email})
-
-    if user["confirmed"]:
-        error = jsonify({"error": "Email has already been confirmed. Please log in."})
-    else:
-        user["confirmed"] = True
-
-    return redirect("/")
-
-
 
 # TODO: Display User Modules
 @app.route("/profile/<userID>/mymodules")

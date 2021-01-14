@@ -2,7 +2,6 @@ from flask import Flask, jsonify, session, redirect
 from app import database
 from passlib.hash import pbkdf2_sha256
 import uuid
-import token
 
 class User:
     
@@ -20,8 +19,6 @@ class User:
                 "name" : form["name"],
                 "email" : form["email"],
                 "password" : form["password"],
-                "userType" : "consumer",
-                "confirmed" : False
         }
 
         if user["password"] != form["confirm_password"]:
@@ -36,7 +33,6 @@ class User:
         
         # Return if Succes
         if database.users.insert_one(user):
-            token = GenerateConfirmationToken(user["email"])
             return self.StartSession(user) 
         
         # Sign Up Fails
