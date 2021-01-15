@@ -14,6 +14,13 @@ class Module:
             "price":       form["modulePrice"],
             "creator_id":  session["user"]["_id"]
         }
+        
+        owner = database.users.find_one({"_id": module["creator_id"]})
+
+        if owner:
+            module["author"] = owner["name"]
+        else:
+            return jsonify({"error": "The user who wants to create this account doesn't exist!"}), 400
 
         if database.modules.insert_one(module):
             return None, 200

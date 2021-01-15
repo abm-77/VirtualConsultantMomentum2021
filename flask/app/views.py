@@ -32,7 +32,23 @@ def index():
 # TODO: Implement Storefront
 @app.route("/store")
 def store ():
-    return "Store"
+    
+    storeModules = database.modules.find({})
+    transformedModuleList = [[]]
+
+    modulesPerRow = 3
+    transformedIndex = 0
+
+    for it, elt in enumerate(storeModules):
+        if it % modulesPerRow == 0 and it != 0:
+            transformedIndex += 1
+            transformedModuleList.append([])
+
+        transformedModuleList[transformedIndex].append(elt)
+    
+
+    print (transformedModuleList)
+    return render_template("public/store.html", marketItems = transformedModuleList)
 
 @app.route("/store/module/<moduleID>")
 def module_store_page(moduleID):

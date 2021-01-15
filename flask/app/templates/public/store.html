@@ -1,0 +1,42 @@
+{% extends "public/templates/base_template.html" %}
+
+
+{% block title %}
+    Store
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1 class="display-4">Marketplace</h1>
+                <hr>
+                
+                {% for row in marketItems %}
+                <div class="container-fluid mt-4">
+                <div class="row justify-content-center">
+
+                    {% for item in row %}
+                    <div class="col-auto mb-3">
+
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item["name"] }} <span class="badge badge-secondary ml-2">${{ item["price"] }}</span></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ item["author"] }}</h6>
+                                <p class="card-text">{{ item["description"] }}</p>
+                            </div>
+                            <button type="button" class="btn btn-dark mb-2">View</button>
+                        </div>
+                    </div>
+ 
+                    {% endfor %}
+
+                </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
