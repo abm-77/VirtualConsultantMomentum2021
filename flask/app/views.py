@@ -32,10 +32,11 @@ def index():
 # TODO: Implement Storefront
 @app.route("/store")
 def store ():
-    
+    # Get all the modules from the database
     storeModules = database.modules.find({})
-    transformedModuleList = [[]]
 
+    # Turn the 1D array into a 2D array with rows of modulesPerRow
+    transformedModuleList = [[]]
     modulesPerRow = 3
     transformedIndex = 0
 
@@ -50,13 +51,12 @@ def store ():
     print (transformedModuleList)
     return render_template("public/store.html", marketItems = transformedModuleList)
 
-@app.route("/store/module/<moduleID>")
+@app.route("/store/modules/<moduleID>")
 def module_store_page(moduleID):
-    return f"Module Store Page: {moduleID}"
+    
+    module = database.modules.find_one({"_id" : moduleID})
 
-@app.route("/testmodule")
-def testmodule ():
-    return render_template("public/testmodule.html")
+    return render_template("public/module_page.html", module = module)
 
 ### MODULE VIEWS ###
 @app.route("/modules/<moduleID>")
@@ -78,13 +78,13 @@ def signup():
     return render_template("public/signup.html", error = None)
 
 @app.route("/signout")
-def LogOut():
+def log_out():
     return User().SignOut()
 
 # TODO: Implement Login 
 @app.route("/login", methods=["GET", "POST"])
 @login_prohibited
-def Login ():
+def login ():
     if request.method == "POST":
         data, err = User().LogIn(request.form)
 
