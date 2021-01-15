@@ -17,7 +17,6 @@
             {% if "Email" in error %}
             Try <a href="/login">logging in.</a>
             {% endif %}
-
         </div>
     {% endif %}
 
@@ -40,6 +39,12 @@
                                 label = "Email",
                                 type = "email",
                                 name = "email"
+                            )}}
+
+                            {{ input.field(
+                                label = "Phone",
+                                type = "tel",
+                                name = "phone"
                             )}}
 
                             {{ input.field(

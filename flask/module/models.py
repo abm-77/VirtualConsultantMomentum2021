@@ -14,7 +14,7 @@ class Module:
             "price":       form["modulePrice"],
             "creator_id":  session["user"]["_id"]
         }
-        
+
         if database.modules.insert_one(module):
             return None, 200
 

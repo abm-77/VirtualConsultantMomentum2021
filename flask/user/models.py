@@ -18,6 +18,7 @@ class User:
                 "_id":      uuid.uuid4().hex,
                 "name":     form["name"],
                 "email":    form["email"],
+                "phone":    form["phone"],
                 "password": form["password"],
                 "role":     form["role"]
         }
@@ -50,7 +51,6 @@ class User:
             return self.StartSession(user)
         
         return jsonify({"error": "Invalid credentials."}), 401
-
 
 
 

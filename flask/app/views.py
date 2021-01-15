@@ -83,11 +83,10 @@ def Login ():
 @app.route("/profile", methods=["GET", "POST"])
 @login_required
 def profile ():
-
     if request.method == "POST":
-        data, err = Module().CreateModule(request.form)
 
-        if err == 401:
+        data, errorCode = Module().CreateModule(request.form)
+        if errorCode != 200:
             return render_template("public/profile.html", success = False, error = data.json["error"])
         else:
             return render_template("public/profile.html", success = True, error = None)
