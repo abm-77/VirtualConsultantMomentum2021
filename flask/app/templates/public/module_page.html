@@ -1,0 +1,41 @@
+{% extends "public/templates/base_template.html" %}
+
+
+
+{% block title %}
+    Store - {{ module["name"] }}
+{% endblock %}
+
+
+
+{% block main %}
+    
+    <div class="container">
+        <div class="row">
+            <div class="text-center mb-4">
+                <img src="{{ url_for('static', filename='img/PlaceholderBanner.svg') }}" class="img-fluid" alt="Product Image">
+            </div>
+            <h1 class="display-4">{{ module["name"] }}</h4>
+            <hr>
+
+            <div class ="container">
+                <div class="row">
+                    <div class="col">
+                        <p>{{ module["description"] }}</p>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">About the Author</h5>
+                                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                <p class="card-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
