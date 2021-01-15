@@ -1,0 +1,80 @@
+{% import "macros/input_macros.html" as input %}
+{% extends "public/templates/base_template.html" %}
+
+{% block title %}
+    Sign Up
+{% endblock %}
+
+
+{% block main %}
+
+    <!-- Display Error if User Failed to Log in -->
+    {% if error != None %}    
+        <div class="alert alert-danger fade show text-center">
+            <strong>Error:</strong>
+            {{ error }}
+
+            {% if "Email" in error %}
+            Try <a href="/login">logging in.</a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div class="container">
+        <div class="row">
+        
+            <div class="col">
+                <div class="card mx-auto" style="width:30rem;">
+                    <div class="card-body">
+                    <h2 class="card-title text-center"> Create an Account</h1>
+                    
+                    <form action="/signup" method="post" id="signupform">
+                            {{ input.field(
+                                label = "Name",
+                                type = "text",
+                                name = "name"
+                            )}}
+
+                            {{ input.field(
+                                label = "Email",
+                                type = "email",
+                                name = "email"
+                            )}}
+
+                            {{ input.field(
+                                label = "Phone",
+                                type = "tel",
+                                name = "phone"
+                            )}}
+
+                            {{ input.field(
+                                label = "Password",
+                                type = "password",
+                                name = "password"
+                            )}}
+
+                            {{ input.field(
+                                label = "Confirm Password",
+                                type = "password",
+                                name = "confirm_password"
+                            )}}
+                        
+
+                            <label for="role">Role</label>
+                            <select class="form-control" name="role" id="role" form="signupform">
+                              <option value="CONSUMER">Consumer</option>
+                              <option value="VENDOR">Vendor</option>
+                            </select>
+
+                            <div class="text-center mt-4">
+                                {{ input.submit(theme="btn-dark") }}
+                            </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,12 +1,32 @@
-from app import app
-from flask import render_template
+from app import app, database
+from flask import render_template, request, jsonify, redirect, session
+from functools import wraps
+from user.models import User
+from module.models import Module
 
+# Decorators
+def login_required(f):
+    @wraps(f)
+    def wrap (*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            return redirect("/")
+    return wrap
+
+def login_prohibited(f):
+    @wraps(f)
+    def wrap (*args, **kwargs):
+        if not 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            return redirect("/")
+    return wrap
 
 # Home Page
 @app.route("/")
 def index():
     return render_template("public/index.html") 
-
 
 ### STORE VIEWS ###
 # TODO: Implement Storefront
@@ -22,30 +42,62 @@ def module_store_page(moduleID):
 def testmodule ():
     return render_template("public/testmodule.html")
 
-
 ### MODULE VIEWS ###
 @app.route("/modules/<moduleID>")
 def module_content_page(moduleID):
     return f"Module Page: {moduleID}"
 
-
 ### USER VIEWS ###
-# TODO: Implement Signup
-@app.route("/signup")
+@app.route("/signup", methods=["GET", "POST"])
+@login_prohibited
 def signup():
-    return "Signup"
+    if request.method == "POST":
+        data, err = User().SignUp(request.form)
+
+        if err == 400:
+            return render_template("public/signup.html", error = data.json["error"])
+        else:
+            return redirect("/profile")
+
+    return render_template("public/signup.html", error = None)
+
+@app.route("/signout")
+def LogOut():
+    return User().SignOut()
 
 # TODO: Implement Login 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
+@login_prohibited
 def Login ():
-    return "Login"
+    if request.method == "POST":
+        data, err = User().LogIn(request.form)
+
+        if err == 401:
+            return render_template("public/login.html", error = data.json["error"])
+        else:
+            return redirect("/profile")
+
+    return render_template("public/login.html", error = None) 
 
 # TODO: Implement Profiles
-@app.route("/profile/<userID>")
-def profile (userID):
-    return "Profile"
+@app.route("/profile", methods=["GET", "POST"])
+@login_required
+def profile ():
+    if request.method == "POST":
 
-@app.route("/profile/<userID>/mymodules")
-def profile_modules (userID):
+        data, errorCode = Module().CreateModule(request.form)
+        if errorCode != 200:
+            return render_template("public/profile.html", success = False, error = data.json["error"])
+        else:
+            return render_template("public/profile.html", success = True, error = None)
+
+
+    return render_template("public/profile.html", success = None, error = None) 
+
+
+# TODO: Display User Modules
+@app.route("/profile/mymodules")
+@login_required
+def profile_modules ():
     return "Profile Modules"
 
