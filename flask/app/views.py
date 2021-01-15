@@ -2,6 +2,7 @@ from app import app, database
 from flask import render_template, request, jsonify, redirect, session
 from functools import wraps
 from user.models import User
+from module.models import Module
 
 # Decorators
 def login_required(f):
@@ -41,12 +42,10 @@ def module_store_page(moduleID):
 def testmodule ():
     return render_template("public/testmodule.html")
 
-
 ### MODULE VIEWS ###
 @app.route("/modules/<moduleID>")
 def module_content_page(moduleID):
     return f"Module Page: {moduleID}"
-
 
 ### USER VIEWS ###
 @app.route("/signup", methods=["GET", "POST"])
@@ -81,15 +80,25 @@ def Login ():
     return render_template("public/login.html", error = None) 
 
 # TODO: Implement Profiles
-@app.route("/profile")
+@app.route("/profile", methods=["GET", "POST"])
 @login_required
 def profile ():
-    return render_template("public/consumer_profile.html") 
+
+    if request.method == "POST":
+        data, err = Module().CreateModule(request.form)
+
+        if err == 401:
+            return render_template("public/profile.html", success = False, error = data.json["error"])
+        else:
+            return render_template("public/profile.html", success = True, error = None)
+
+
+    return render_template("public/profile.html", success = None, error = None) 
 
 
 # TODO: Display User Modules
-@app.route("/profile/<userID>/mymodules")
+@app.route("/profile/mymodules")
 @login_required
-def profile_modules (userID):
+def profile_modules ():
     return "Profile Modules"
 
