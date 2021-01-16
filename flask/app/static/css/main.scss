@@ -1,0 +1,12 @@
+// green: 4BA55F
+// orange: DF6741
+// yellow: EBC445
+// dark red: 6E140C
+// brick red: 942B26
+
+$theme-colors: (
+  "light":      #FFFFFF,
+  "dark":      #4BA55F 
+);
+
+@import "./scss/bootstrap";
