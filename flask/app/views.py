@@ -23,6 +23,10 @@ def login_prohibited(f):
             return redirect("/")
     return wrap
 
+#Test path for webpage
+@app.route("/test")
+def test():
+    return render_template("public/test.html")
 # Home Page
 @app.route("/")
 def index():
