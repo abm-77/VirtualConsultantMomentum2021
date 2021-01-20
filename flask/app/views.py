@@ -55,8 +55,9 @@ def store ():
 def module_store_page(moduleID):
     
     module = database.modules.find_one({"_id" : moduleID})
+    module_author = database.users.find_one({"_id" : module["creator_id"]})
 
-    return render_template("public/module_page.html", module = module)
+    return render_template("public/module_page.html", module = module, author = module_author)
 
 ### MODULE VIEWS ###
 @app.route("/modules/<moduleID>")

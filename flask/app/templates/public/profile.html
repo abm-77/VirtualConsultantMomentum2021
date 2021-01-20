@@ -24,7 +24,7 @@
     <div class="row">
     <!-- Basic Info -->
         <div class="col">
-            <div class="card mx-auto" style="width:30rem;">
+            <div class="card border-dark mx-auto" style="width:30rem;">
                 <div class="card-body">
                     <h3 class="card-title text-center">Basic Information</h2> 
                     
@@ -52,7 +52,7 @@
         <!-- Vendor Module Creation -->
         {% if session["user"]["role"] == "VENDOR" %}
         <div class="col">
-            <div class="card mx-auto" style="width:30rem;">
+            <div class="card mx-auto border-dark" style="width:30rem;">
                 <div class="card-body">
                     <h3 class="card-title text-center">Create a Module</h2> 
                     <form action="/profile" method="POST" name="moduleform"> 
