@@ -1,0 +1,28 @@
+// green: 4BA55F
+// orange: DF6741
+// yellow: EBC445
+// dark red: 6E140C
+// brick red: 942B26
+/*
+logo:
+⁃text: 2F7040
+⁃tree: 8B673D
+⁃leaf: 75B656
+upper banner:
+⁃background: C0F5BA
+⁃features, support, etc.: 42882A
+⁃all borders: black (000000)
+⁃sign up filler + all mouse hover fillers: 2F7040
+lower info section:
+⁃background: C0F5BA
+⁃borders: black (000000)
+⁃“get started” filler: 2F7040
+⁃“New!” module notif: BD6C2C
+*/
+
+$theme-colors: (
+  "light":      #C1F5BA,
+  "dark":      #2F7040 
+);
+
+@import "./scss/bootstrap";
