@@ -1,88 +1,61 @@
 {% extends "public/templates/base_template.html" %}
-{% import "macros/input_macros.html" as input %}
 {% block title %}
-    Profile
-{% endblock title %}
+    {{ user['name'] }}'s Profile
+{% endblock %}
+
 
 {% block main %}
-
 <div class="container">
-    
-    <!-- Display Error or Success -->
-    {% if success == True %}
-        <div class="alert alert-success fade show text-center">
-            <strong>Success!</strong>
-            Your module was created succesfully!
-        </div>
-    {% elif success == False %}
-        <div class="alert alert-danger fade show text-center">
-            <strong>Error:</strong>
-            {{ error }}
-        </div>
-    {% endif %}
 
     <div class="row">
-    <!-- Basic Info -->
+        <div class="text-center mb-4">
+            <img src="{{ url_for('static', filename='img/PlaceholderBanner.svg') }}" class="img-fluid" alt="Product Image">
+        </div>
+    </div>
+
+    <div class= "row mb-4">
         <div class="col">
-            <div class="card border-dark mx-auto" style="width:30rem;">
+            <div class="card border-dark mx-auto" style="width: 30rem;" >
                 <div class="card-body">
                     <h3 class="card-title text-center">Basic Information</h2> 
-                    
+
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <strong>Name: </strong>{{ session["user"]["name"] }}
+                            <strong>Name: </strong>{{ user["name"] }}
                         </li>
 
                         <li class="list-group-item">
-                            <strong>Email: </strong>{{ session["user"]["email"] }}
+                            <strong>Email: </strong>{{ user["email"] }}
                         </li>
 
                         <li class="list-group-item">
-                            <strong>Phone: </strong>{{ session["user"]["Phone"] }}
+                            <strong>Phone: </strong>{{ user["phone"] }}
                         </li>
 
                         <li class="list-group-item">
-                            <strong>User Role: </strong>{{ session["user"]["role"] }}
+                            <strong>User Role: </strong> {{ user["role"] }}
                         </li>
-                     </ul>
+                    </ul>
                 </div>
             </div>
         </div>
-
-        <!-- Vendor Module Creation -->
-        {% if session["user"]["role"] == "VENDOR" %}
-        <div class="col">
-            <div class="card mx-auto border-dark" style="width:30rem;">
-                <div class="card-body">
-                    <h3 class="card-title text-center">Create a Module</h2> 
-                    <form action="/profile" method="POST" name="moduleform"> 
-                                                        
-                        {{ input.field(
-                             label="Module Name",
-                             type="text",
-                             name="moduleName"
-                        )}}
-                       
-                        <div class="fom-group mb-2">
-                            <label>Module Description</label>
-                            <textarea class="form-control" name="moduleDescr" maxlength="150" rows="3" style="resize:none;" required></textarea>
-                        </div>
-
-                        <div class="form-group mb-2">
-                            <label>Module Price</label>
-                            <input class="form-control" name="modulePrice" type="number" min="1" step="any" required>
-                        </div>
-
-                        <div class="text-center mt-4">
-                            {{ input.submit(text="Create", theme="btn-dark") }}
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        {% endif %}
     </div>
+
+    <div class="row mb-4">
+        <div class="card border-dark mx-auto" >
+            <div class="card-body">
+                <h3 class="card-title text-center">Biography</h2> 
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus vitae congue mauris rhoncus aenean vel elit.
+                    Lacus vel facilisis volutpat est velit egestas dui. Cras semper auctor neque vitae tempus quam pellentesque nec nam. Interdum velit laoreet id donec ultrices tincidunt arcu. Id nibh tortor id aliquet lectus proin. Sagittis orci a scelerisque purus semper. 
+                    Consequat mauris nunc congue nisi vitae suscipit. Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat. Consectetur a erat nam at lectus. Nulla porttitor massa id neque aliquam. Elementum integer enim neque volutpat ac tincidunt. 
+                    In fermentum posuere urna nec tincidunt praesent semper feugiat
+                </p>
+            </div>
+        </div>
+    </div>
+
 </div>
-
-
 {% endblock %}
+
+

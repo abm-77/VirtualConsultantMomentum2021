@@ -56,13 +56,12 @@ def module_store_page(moduleID):
     
     module = database.modules.find_one({"_id" : moduleID})
     module_author = database.users.find_one({"_id" : module["creator_id"]})
+    
+    if module["name"] == "COVID Grants for Small Businesses":
+        return render_template("public/covid_module.html", author = module_author)
+    else:
+        return render_template("public/module_page.html", module = module, author = module_author)
 
-    return render_template("public/module_page.html", module = module, author = module_author)
-
-### MODULE VIEWS ###
-@app.route("/modules/<moduleID>")
-def module_content_page(moduleID):
-    return f"Module Page: {moduleID}"
 
 ### USER VIEWS ###
 @app.route("/signup", methods=["GET", "POST"])
@@ -74,7 +73,7 @@ def signup():
         if err == 400:
             return render_template("public/signup.html", error = data.json["error"])
         else:
-            return redirect("/profile")
+            return redirect("/profiles/user")
 
     return render_template("public/signup.html", error = None)
 
@@ -92,29 +91,30 @@ def login ():
         if err == 401:
             return render_template("public/login.html", error = data.json["error"])
         else:
-            return redirect("/profile")
+            return redirect("/profiles/user")
 
     return render_template("public/login.html", error = None) 
 
 # TODO: Implement Profiles
-@app.route("/profile", methods=["GET", "POST"])
+@app.route("/profiles/user", methods=["GET", "POST"])
 @login_required
-def profile ():
+def user_profile ():
     if request.method == "POST":
 
         data, errorCode = Module().CreateModule(request.form)
         if errorCode != 200:
-            return render_template("public/profile.html", success = False, error = data.json["error"])
+            return render_template("public/user_profile.html", success = False, error = data.json["error"])
         else:
-            return render_template("public/profile.html", success = True, error = None)
+            return render_template("public/user_profile.html", success = True, error = None)
 
+    return render_template("public/user_profile.html", success = None, error = None) 
 
-    return render_template("public/profile.html", success = None, error = None) 
+@app.route("/profiles/<userID>")
+def profile (userID):
+    user = database.users.find_one({'_id': userID})
 
-
-# TODO: Display User Modules
-@app.route("/profile/mymodules")
-@login_required
-def profile_modules ():
-    return "Profile Modules"
+    if user:
+        return render_template("public/profile.html", user = user) 
+    else:
+        return "User not found!"
 

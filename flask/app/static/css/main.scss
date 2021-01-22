@@ -25,4 +25,16 @@ $theme-colors: (
   "dark":      #2F7040 
 );
 
+$display-font-sizes: (
+  1: 5rem,
+  2: 4.5rem,
+  3: 4rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 2.5rem,
+  7: 2.0rem,
+  8: 1.5rem,
+  9: 1.0rem,
+  10: 0.5rem,
+);
 @import "./scss/bootstrap";
