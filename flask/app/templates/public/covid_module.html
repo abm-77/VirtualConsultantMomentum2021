@@ -1,0 +1,117 @@
+{% extends "public/templates/base_template.html" %}
+
+{% block title %}
+    Store - COVID Grants
+{% endblock %}
+
+{% block main %}
+    
+    <div class="container mb-4">
+        <div class="row">
+            <div class="text-center mb-4">
+                <img src="{{ url_for('static', filename='img/PlaceholderBanner.svg') }}" class="img-fluid" alt="Product Image">
+            </div>
+
+            <h1 class="display-4">COVID Grants for Small Businesses</h4>
+            <hr>
+
+            <div class ="container">
+                <div class="row">
+                    <div class="col">
+                        <div id="moduleCarousel" class="carousel carousel-dark slide" data-interval="false">
+                            <div class="carousel-inner">
+                                
+                                <div class="carousel-item active">
+                                    <h1 class="display-6"> Main Points/Additions/Changes</h1>
+                                    <ul class="list-group-flush lead">
+                                        <li class="list-group-item">Expenses paid with PPP funds are deductible. The loan amount isn’t included with gross income (big win!)</li>
+                                        <li class="list-group-item">Economic Injury Disaster Loan (EIDL) advances are tax free and deductible.</li>
+                                        <li class="list-group-item">The new application is greatly simplified for loans under $150K. Just sign and submit to lender a certification that provides: 
+                                            <ol>
+                                                <li>Number of employees able to retain bc of the loan</li>
+                                                <li>Amount of loan spent on eligible payroll costs</li>
+                                                <li>Attestation that info was accurately provided along with applicable requirements and plan to retain records for required period. (4yrs for employment, 3yrs for other records)</li>
+                                            </ol>
+                                        </li>
+                                        <li class="list-group-item">Simplified process applies to over 85% of loan seekers. Loans over 150K still need to provide documentation and verification.</li>
+                                    </ul>
+
+                                </div>
+
+                                <div class="carousel-item">
+                                    <h1 class="display-6"> PPP Expansion</h1>
+                                    <h1 class="display-8">More expenses are eligible for forgiveness including..</h1>
+                                    <ul class="list-group-flush lead">
+                                        <li class="list-group-item">Covered operations expenditures (business software or cloud computing service that facilitate business operations)</li>
+                                        <li class="list-group-item">Covered property damage costs (including vandalism/looting during protests in 2020 not covered by insurance)</li>
+                                        <li class="list-group-item">Covered supplier costs</li>
+                                        <li class="list-group-item">Covered worker protection expenditures</li>
+                                        <li class="list-group-item">Group life, disability, vision, dental insurance can be included as payroll costs. Original expenses are still covered (payroll, interest, covered mortgage obligations, rent, utilities)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <h1 class="display-6">Second PPP Loan</h1>
+                                    <ul class="list-group-flush lead">
+                                        <li class="list-group-item">Eligibility: companies with less than 300 employees suffering a 25% drop in any quarters revenue in 2019 or 2020</li>
+                                        <li class="list-group-item">Relative max loan amount: multiply the average monthly payroll by 2.5. This time, businesses can pick either the year 2019 or the one year period before loan made</li>
+                                        <li class="list-group-item">Allows a multiplication by 3.5 for larger loans for “accommodation and food service” industry</li>
+                                        <li class="list-group-item">Max loan this time is $2 million (decrease from previous $10 million)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <h1 class="display-6">Employee Retention Tax Credit Expanded</h1>
+                                    <p class="lead">
+                                        Eligibility: (1) businesses which were/are wholly or partially closed due to government orders related to COVID (e.g. stay at home or non essential business order) OR (2) businesses whose gross receipts for 2020 are below 50% of comparable quarter in 2019. Once gross receipts go above 80% of comparable quarter, businesses are no longer qualified after the end of that quarter
+                                        Previously, amount of credit was 50% of qualifying wages from March 12, 2020 to Jan 1 2021.
+                                        Now, ERTC can be used with PPP as long as it’s used for wages not paid with PPP.
+                                        Amount of credit increased to 70% and time period extended to July 1, 2021. 
+                                        Now, $10,000 per quarter instead of in total.
+                                    </p>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <h1 class="display-6">Money set aside for Community Development Financial Institutions (CFDIs) and Minority Depository Institutions (MDIs)</h1>
+                                    <p class="lead">
+                                        Last PPP, many business owners of color left out of program
+                                        One new provision provides $9 billion for low cost long term capital investments to depository institution CDFIs and MDIs and $3 billion to CDFI Fund to give grants to other financial institutions to conserve consumers, small businesses, and nonprofits
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div> 
+                        
+                        <div class="text-center mt-4">
+                            <button class="btn btn-lg btn-dark" href="#moduleCarousel" role="button" data-bs-slide="prev">Prev</button>
+                            <button class="btn btn-lg btn-dark" href="#moduleCarousel" role="button" data-bs-slide="next">Next</button>
+                            <div class="card border-dark mx-auto mt-4" style="width: 18rem;">
+                                <div class="card-body">
+
+                                    <h5 class="card-title text-center">About the Author</h5>
+                                    <img src="{{ url_for('static', filename='img/PlaceholderImage.svg') }}" class="card-img-top" alt="Product Image">
+                                    <h6 class="card-subtitle mb-2 mt-2 text-center text-muted">{{ author["name"] }}</h6>
+                                    
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Email: {{ author["email"] }}</li>
+                                        <li class="list-group-item">Phone: {{ author["phone"] }}</li>
+                                        <li class="list-group-item"></li>
+                                    </ul>
+
+                                    <div class="text-center">
+                                        <a type="button" class="btn btn-lg btn-outline-dark mb-2" href="/profiles/{{ author['_id'] }}">View Profile</a>
+                                        <a type="button" class="btn btn-lg btn-dark mb-2" href="#">Buy Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -4,7 +4,6 @@
     Store - {{ module["name"] }}
 {% endblock %}
 
-
 {% block main %}
     
     <div class="container mb-4">
@@ -19,18 +18,28 @@
             <div class ="container">
                 <div class="row">
                     <div class="col-8">
-                        <p>{{ module["description"] }}</p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus vitae congue mauris rhoncus aenean vel elit. Lacus vel facilisis volutpat est velit egestas dui. 
-                            Cras semper auctor neque vitae tempus quam pellentesque nec nam. Interdum velit laoreet id donec ultrices tincidunt arcu. Id nibh tortor id aliquet lectus proin. Sagittis orci a scelerisque purus semper. Consequat mauris nunc congue nisi vitae suscipit. 
-                            Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat. Consectetur a erat nam at lectus. Nulla porttitor massa id neque aliquam. Elementum integer enim neque volutpat ac tincidunt. In fermentum posuere urna nec tincidunt praesent semper feugiat.
-                        </p>
-                        <br>
-                        <p>
-                            Scelerisque purus semper eget duis at tellus at urna condimentum. Urna nunc id cursus metus aliquam eleifend mi in nulla. Quis risus sed vulputate odio. Malesuada proin libero nunc consequat interdum varius sit amet mattis. Purus sit amet volutpat consequat mauris. 
-                            Tortor at auctor urna nunc id cursus metus. Donec et odio pellentesque diam volutpat commodo sed. Sit amet purus gravida quis. Duis at consectetur lorem donec massa sapien. Vivamus arcu felis bibendum ut tristique et egestas quis ipsum. Aenean euismod elementum nisi quis eleifend quam adipiscing vitae. 
-                            Quis auctor elit sed vulputate mi. Ut eu sem integer vitae justo eget magna fermentum. Non arcu risus quis varius quam quisque id diam.
-                        </p>
+                        <div id="moduleCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                
+                                <div class="carousel-item active">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus vitae congue mauris rhoncus aenean vel elit. Lacus vel facilisis volutpat est velit egestas dui. 
+                                    Cras semper auctor neque vitae tempus quam pellentesque nec nam. Interdum velit laoreet id donec ultrices tincidunt arcu. Id nibh tortor id aliquet lectus proin. Sagittis orci a scelerisque purus semper. Consequat mauris nunc congue nisi vitae suscipit. 
+                                    Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat. Consectetur a erat nam at lectus. Nulla porttitor massa id neque aliquam. Elementum integer enim neque volutpat ac tincidunt. In fermentum posuere urna nec tincidunt praesent semper feugiat.
+                                </div>
+
+                                <div class="carousel-item">
+                                    Scelerisque purus semper eget duis at tellus at urna condimentum. Urna nunc id cursus metus aliquam eleifend mi in nulla. Quis risus sed vulputate odio. Malesuada proin libero nunc consequat interdum varius sit amet mattis. Purus sit amet volutpat consequat mauris. 
+                                    Tortor at auctor urna nunc id cursus metus. Donec et odio pellentesque diam volutpat commodo sed. Sit amet purus gravida quis. Duis at consectetur lorem donec massa sapien. Vivamus arcu felis bibendum ut tristique et egestas quis ipsum. Aenean euismod elementum nisi quis eleifend quam adipiscing vitae. 
+                                    Quis auctor elit sed vulputate mi. Ut eu sem integer vitae justo eget magna fermentum. Non arcu risus quis varius quam quisque id diam.
+                                </div>
+
+                            </div>
+                        </div> 
+                        
+                        <div class="text-center mt-4">
+                            <button class="btn btn-lg btn-dark" href="#moduleCarousel" role="button" data-bs-slide="prev">Prev</button>
+                            <button class="btn btn-lg btn-dark" href="#moduleCarousel" role="button" data-bs-slide="next">Next</button>
+                        </div>
                     </div>
 
                     <div class="col-2">
